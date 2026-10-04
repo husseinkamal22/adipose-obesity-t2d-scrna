@@ -9,8 +9,9 @@ ligand–receptor analysis** used to produce the figures and result tables in
 `results/`. It is a portfolio / methods-reproducibility project.
 
 > **Scope statement.** No biological analysis was rerun to prepare this
-> repository. Existing scientific results were not intentionally altered. The
-> only changes made were file organisation, path portability and documentation.
+> repository, and no numeric result was altered. The changes made were file
+> organisation, path portability, documentation, and — per §1 — correction of
+> the tissue and composite sample labels to match the official GEO records.
 
 ---
 
@@ -30,23 +31,23 @@ ligand–receptor analysis** used to produce the figures and result tables in
 
 | Sample ID | GEO sample | Condition | Tissue |
 | --------- | ---------- | --------- | ------ |
-| BRI-1456 | GSM8548235 | Healthy | SQ |
-| BRI-1457 | GSM8548236 | Unhealthy | SQ |
-| BRI-1458 | GSM8548237 | Healthy | Omentum |
-| BRI-1459 | GSM8548238 | Unhealthy | Omentum |
+| BRI-1456 | GSM8548235 | Healthy | Omentum |
+| BRI-1457 | GSM8548236 | Unhealthy | Omentum |
+| BRI-1458 | GSM8548237 | Healthy | SQ |
+| BRI-1459 | GSM8548238 | Unhealthy | SQ |
 
-> ⚠️ **Metadata discrepancy — please read.** The GEO series record and the
-> deposited per-cell metadata file assign the **tissue labels differently**.
-> GEO lists BRI-1456/1457 as omental and BRI-1458/1459 as subcutaneous, while
-> the deposited `GSE278526_cell_barcodes_metadata.tsv.gz` file (and every
-> output table in `results/`) uses the opposite assignment shown in the table
-> above. This repository follows the **metadata file**, because that is what
-> the analysis outputs were built from, and because
-> `Epithelial_mesothelial` cells (2,029 total) and `B_cells` (430 total)
-> occur **only** in BRI-1458/1459 — a distribution that is more consistent with
-> omentum than with subcutaneous tissue. The discrepancy is documented here
-> rather than silently resolved; the underlying GEO records and metadata file
-> are unchanged.
+> **Tissue labelling.** Tissue labels above are taken from the official
+> NCBI GEO sample records for GSE278526 (`!Sample_source_name_ch1`: BRI-1456
+> and BRI-1457 are omental, BRI-1458 and BRI-1459 are subcutaneous abdominal).
+> The deposited per-cell metadata file
+> `GSE278526_cell_barcodes_metadata.tsv.gz` carries the **opposite**
+> assignment; that file is excluded by `.gitignore`, is not modified by this
+> repository, and was not used to label the output tables. Every result table
+> in `results/` and every figure label follows the GEO records. Condition
+> (Healthy / Unhealthy) is assigned identically in both sources and is
+> unaffected. Relabelling touched tissue and composite sample labels only —
+> **no numeric value in any result table was changed**, and no analysis was
+> re-executed.
 
 ### Design limitation
 
@@ -162,8 +163,8 @@ Mean `InflammatoryScore` per broad cell type (from
 Descriptively, `Myeloid_macrophage` and `NK_cells` show the highest mean
 inflammatory scores in each sample, while `Stromal_fibroblast` shows the
 highest mean `ECMScore` in every sample (0.72–0.90) and negative mean
-inflammatory scores in the two omental samples. `Endothelial` mean
-inflammatory scores are lower in BRI-1458/1459 than in BRI-1456/1457.
+inflammatory scores in BRI-1458/1459. `Endothelial` mean inflammatory
+scores are lower in BRI-1458/1459 than in BRI-1456/1457.
 These are four single samples; no group-level inference is supported.
 
 ### 3.3 Inferred cell–cell communication (CellChat)
@@ -175,7 +176,7 @@ are **not** measurements of pathway activity, flux or causality.
 
 Mean communication probability per focused pathway:
 
-| Pathway | Healthy SQ | Unhealthy SQ | Healthy Omentum | Unhealthy Omentum |
+| Pathway | Healthy Omentum | Unhealthy Omentum | Healthy SQ | Unhealthy SQ |
 | ------- | ---------: | -----------: | --------------: | -----------------: |
 | CCL | 1.051 | 1.321 | 0.424 | 0.854 |
 | CXCL | 1.723 | 2.289 | 1.029 | 1.178 |
@@ -193,20 +194,20 @@ COLLAGEN, MHC-II, CXCL, LAMININ and APP
 (`results/cellchat_pathway_communication_summary.csv`). MIF and COLLAGEN rank
 first and second in every sample.
 
-Descriptively: CCL and CXCL scores are higher in the SQ samples than in the
-omental samples in both conditions; MHC-II scores are higher in the healthy
+Descriptively: CCL and CXCL scores are higher in the omental samples than
+in the SQ samples in both conditions; MHC-II scores are higher in the healthy
 samples than in the unhealthy samples in both tissues; MHC-I and
-Prostaglandin are highest in BRI-1459 (Unhealthy Omentum). With n = 1 per
+Prostaglandin are highest in BRI-1459 (Unhealthy SQ). With n = 1 per
 group these are observed patterns in these four samples, not group effects.
 
 **Top inferred CXCL interactions** (`results/cellchat_CXCL_top10_sender_receiver.csv`):
 
 | Sample | Top sender → receiver | Score |
 | ------ | --------------------- | ----: |
-| Healthy SQ | Myeloid_macrophage → Endothelial | 0.578 |
-| Unhealthy SQ | Myeloid_macrophage → Endothelial | 0.630 |
-| Unhealthy Omentum | Myeloid_macrophage → Endothelial | 0.430 |
-| Healthy Omentum | Stromal_fibroblast → Dendritic_cells | 0.209 |
+| Healthy Omentum | Myeloid_macrophage → Endothelial | 0.578 |
+| Unhealthy Omentum | Myeloid_macrophage → Endothelial | 0.630 |
+| Unhealthy SQ | Myeloid_macrophage → Endothelial | 0.430 |
+| Healthy SQ | Stromal_fibroblast → Dendritic_cells | 0.209 |
 
 `Myeloid_macrophage → Endothelial` is the highest-scoring inferred CXCL
 interaction in three of the four samples; in BRI-1458 the highest-scoring
@@ -263,13 +264,13 @@ re-downloadable from GEO or re-derivable from the scripts.
    All paths are resolved with `here::here()`, so scripts work from any
    working directory inside the project.
 
-**Caveat:** `scripts/04_cellchat_analysis.R` currently contains the CellChat
-construction code but only executes `cellchat1` and does not save the four
-`results/cellchat_BRI-*.rds` objects. Those objects already exist in the
-repository from the original run. **They were not regenerated for this
-repository**, so this one script does not yet fully reproduce its own output.
-This is documented rather than patched, because correcting it would require
-re-running part of the analysis.
+**Caveat:** `scripts/04_cellchat_analysis.R` documents the full four-sample
+CellChat workflow, including the `saveRDS()` calls that write the four
+`results/cellchat_BRI-*.rds` objects. **It was not executed while preparing
+this repository.** Those four objects already exist from the original run and
+were deliberately not regenerated, because doing so would mean re-running part
+of the analysis. The script is therefore an accurate record of how they were
+produced, not evidence that they were reproduced here.
 
 ---
 
@@ -285,15 +286,15 @@ re-running part of the analysis.
 - **No claim of disease mechanism or treatment effect** is made anywhere in
   this repository. Observed patterns are reported as patterns in these four
   samples.
-- Tissue labelling follows the deposited metadata file — see the discrepancy
-  note in §1.
+- Tissue labelling follows the official GEO records for GSE278526 — see §1.
+  The deposited per-cell metadata file carries the opposite assignment and is
+  not used by this repository.
 
 ---
 
 ## 7. License
 
-No license file has been added yet. Repository content is provided as-is for
-inspection and educational use until a license is selected.
+This repository is released under the MIT License — see [`LICENSE`](LICENSE).
 
 ---
 

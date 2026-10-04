@@ -10,10 +10,10 @@
 #
 # Study design:
 #
-# BRI-1456 = Healthy SQ
-# BRI-1457 = Unhealthy SQ
-# BRI-1458 = Healthy Omentum
-# BRI-1459 = Unhealthy Omentum
+# BRI-1456 = Healthy Omentum
+# BRI-1457 = Unhealthy Omentum
+# BRI-1458 = Healthy SQ
+# BRI-1459 = Unhealthy SQ
 #
 # This script starts from the already processed Seurat objects.
 # Primary processing has already been completed and saved.
@@ -55,19 +55,19 @@ seurat4 <- readRDS(
 # ============================================================
 
 seurat1$disease <- "Healthy"
-seurat1$tissue <- "SQ"
+seurat1$tissue <- "Omentum"
 seurat1$sample_name <- "BRI-1456"
 
 seurat2$disease <- "Unhealthy"
-seurat2$tissue <- "SQ"
+seurat2$tissue <- "Omentum"
 seurat2$sample_name <- "BRI-1457"
 
 seurat3$disease <- "Healthy"
-seurat3$tissue <- "Omentum"
+seurat3$tissue <- "SQ"
 seurat3$sample_name <- "BRI-1458"
 
 seurat4$disease <- "Unhealthy"
-seurat4$tissue <- "Omentum"
+seurat4$tissue <- "SQ"
 seurat4$sample_name <- "BRI-1459"
 
 
@@ -76,25 +76,25 @@ seurat4$sample_name <- "BRI-1459"
 # ============================================================
 
 cat(
-  "BRI-1456 | Healthy | SQ:",
+  "BRI-1456 | Healthy | Omentum:",
   ncol(seurat1),
   "cells\n"
 )
 
 cat(
-  "BRI-1457 | Unhealthy | SQ:",
+  "BRI-1457 | Unhealthy | Omentum:",
   ncol(seurat2),
   "cells\n"
 )
 
 cat(
-  "BRI-1458 | Healthy | Omentum:",
+  "BRI-1458 | Healthy | SQ:",
   ncol(seurat3),
   "cells\n"
 )
 
 cat(
-  "BRI-1459 | Unhealthy | Omentum:",
+  "BRI-1459 | Unhealthy | SQ:",
   ncol(seurat4),
   "cells\n"
 )
@@ -218,7 +218,7 @@ if ("SingleR_label" %in% colnames(seurat4@meta.data)) {
 # 08 — BRI-1457: CLUSTER AND MARKER INSPECTION
 # ============================================================
 
-# BRI-1457 = Unhealthy SQ
+# BRI-1457 = Unhealthy Omentum
 #
 # Goal:
 # Inspect the existing clusters and their marker genes
@@ -230,7 +230,7 @@ if ("SingleR_label" %in% colnames(seurat4@meta.data)) {
 # 08 — BRI-1457: CLUSTER AND MARKER INSPECTION
 # ============================================================
 
-# BRI-1457 = Unhealthy SQ
+# BRI-1457 = Unhealthy Omentum
 #
 # Goal:
 # Inspect the existing clusters and their marker genes
@@ -377,7 +377,7 @@ print(
 # ============================================================
 
 # ------------------------------------------------------------
-# BRI-1456 — Healthy SQ
+# BRI-1456 — Healthy Omentum
 # ------------------------------------------------------------
 
 cluster_annotations_1 <- c(
@@ -400,7 +400,7 @@ seurat1$cell_type <- unname(
 
 
 # ------------------------------------------------------------
-# BRI-1457 — Unhealthy SQ
+# BRI-1457 — Unhealthy Omentum
 # ------------------------------------------------------------
 
 cluster_annotations_2 <- c(
@@ -425,7 +425,7 @@ seurat2$cell_type <- unname(
 
 
 # ------------------------------------------------------------
-# BRI-1458 — Healthy Omentum
+# BRI-1458 — Healthy SQ
 # ------------------------------------------------------------
 
 # Already assigned above.
@@ -433,7 +433,7 @@ seurat2$cell_type <- unname(
 
 
 # ------------------------------------------------------------
-# BRI-1459 — Unhealthy Omentum
+# BRI-1459 — Unhealthy SQ
 # ------------------------------------------------------------
 
 cluster_annotations_4 <- c(
@@ -514,19 +514,19 @@ meta4 <- seurat4@meta.data
 
 meta1$sample_name <- "BRI-1456"
 meta1$disease <- "Healthy"
-meta1$tissue <- "SQ"
+meta1$tissue <- "Omentum"
 
 meta2$sample_name <- "BRI-1457"
 meta2$disease <- "Unhealthy"
-meta2$tissue <- "SQ"
+meta2$tissue <- "Omentum"
 
 meta3$sample_name <- "BRI-1458"
 meta3$disease <- "Healthy"
-meta3$tissue <- "Omentum"
+meta3$tissue <- "SQ"
 
 meta4$sample_name <- "BRI-1459"
 meta4$disease <- "Unhealthy"
-meta4$tissue <- "Omentum"
+meta4$tissue <- "SQ"
 
 
 # ------------------------------------------------------------
@@ -888,7 +888,7 @@ score_meta1 <- seurat1@meta.data %>%
   mutate(
     sample_name = "BRI-1456",
     disease = "Healthy",
-    tissue = "SQ"
+    tissue = "Omentum"
   )
 
 
@@ -896,7 +896,7 @@ score_meta2 <- seurat2@meta.data %>%
   mutate(
     sample_name = "BRI-1457",
     disease = "Unhealthy",
-    tissue = "SQ"
+    tissue = "Omentum"
   )
 
 
@@ -904,7 +904,7 @@ score_meta3 <- seurat3@meta.data %>%
   mutate(
     sample_name = "BRI-1458",
     disease = "Healthy",
-    tissue = "Omentum"
+    tissue = "SQ"
   )
 
 
@@ -912,7 +912,7 @@ score_meta4 <- seurat4@meta.data %>%
   mutate(
     sample_name = "BRI-1459",
     disease = "Unhealthy",
-    tissue = "Omentum"
+    tissue = "SQ"
   )
 
 

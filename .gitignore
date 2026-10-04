@@ -10,6 +10,7 @@
 Thumbs.db
 *.tmp
 *.log
+Rplots.pdf
 
 # ---- Raw GEO data (public: GSE278526) ----
 # ~900 MB total; download from GEO instead of cloning.

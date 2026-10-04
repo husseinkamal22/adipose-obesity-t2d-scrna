@@ -45,11 +45,14 @@ cat("\nAll four CellChat objects loaded successfully.\n")
 # 3. Define sample labels
 # ------------------------------------------------------------
 
+# Labels are ordered to match cellchat1..cellchat4
+# (BRI-1456, BRI-1457, BRI-1458, BRI-1459).
+# Tissue follows the official NCBI GEO GSE278526 sample records.
 sample_labels <- c(
-  "Healthy SQ",
-  "Unhealthy SQ",
   "Healthy Omentum",
-  "Unhealthy Omentum"
+  "Unhealthy Omentum",
+  "Healthy SQ",
+  "Unhealthy SQ"
 )
 
 cellchat_list <- list(

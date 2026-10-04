@@ -2,11 +2,11 @@
 # 02 — ANNOTATION AND CELL COMPOSITION
 # GSE278526 adipose tissue scRNA-seq
 #
-# Samples:
-# BRI-1456 = Healthy SQ
-# BRI-1457 = Unhealthy SQ
-# BRI-1458 = Healthy Omentum
-# BRI-1459 = Unhealthy Omentum
+# Samples (tissue per official NCBI GEO GSE278526 sample records):
+# BRI-1456 = Healthy Omentum
+# BRI-1457 = Unhealthy Omentum
+# BRI-1458 = Healthy SQ
+# BRI-1459 = Unhealthy SQ
 # ============================================================
 
 
@@ -54,19 +54,19 @@ cat("All four primary processed Seurat objects loaded.\n")
 
 seurat1$sample_id <- "BRI-1456"
 seurat1$disease <- "Healthy"
-seurat1$tissue <- "SQ"
+seurat1$tissue <- "Omentum"
 
 seurat2$sample_id <- "BRI-1457"
 seurat2$disease <- "Unhealthy"
-seurat2$tissue <- "SQ"
+seurat2$tissue <- "Omentum"
 
 seurat3$sample_id <- "BRI-1458"
 seurat3$disease <- "Healthy"
-seurat3$tissue <- "Omentum"
+seurat3$tissue <- "SQ"
 
 seurat4$sample_id <- "BRI-1459"
 seurat4$disease <- "Unhealthy"
-seurat4$tissue <- "Omentum"
+seurat4$tissue <- "SQ"
 
 
 # ============================================================

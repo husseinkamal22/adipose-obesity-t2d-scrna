@@ -43,7 +43,7 @@ cat("\nFigure preparation started successfully.\n")
 p1 <- ggplot(
   composition,
   aes(
-    x = sample_name,
+    x = sample_id,
     y = percentage,
     fill = broad_cell_type
   )

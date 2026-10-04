@@ -33,19 +33,19 @@ seurat4 <- readRDS(
 
 seurat1$sample_name <- "BRI-1456"
 seurat1$disease <- "Healthy"
-seurat1$tissue <- "SQ"
+seurat1$tissue <- "Omentum"
 
 seurat2$sample_name <- "BRI-1457"
 seurat2$disease <- "Unhealthy"
-seurat2$tissue <- "SQ"
+seurat2$tissue <- "Omentum"
 
 seurat3$sample_name <- "BRI-1458"
 seurat3$disease <- "Healthy"
-seurat3$tissue <- "Omentum"
+seurat3$tissue <- "SQ"
 
 seurat4$sample_name <- "BRI-1459"
 seurat4$disease <- "Unhealthy"
-seurat4$tissue <- "Omentum"
+seurat4$tissue <- "SQ"
 
 
 # ============================================================
